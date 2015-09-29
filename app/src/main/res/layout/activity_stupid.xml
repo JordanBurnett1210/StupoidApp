@@ -3,13 +3,14 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".StupidActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".StupidActivity"
+    android:id="@+id/backgroundLayout">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Self Destruct"
-        android:id="@+id/stupidbutton"
+        android:text="CHANGE SCREEN COLOR"
+        android:id="@+id/colorChangeButton"
         android:enabled="false"
         android:longClickable="false"
         android:layout_gravity="center_vertical"
@@ -19,25 +20,26 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Blegh"
-        android:id="@+id/otherbutton"
+        android:text="CHANGE THE SCREEN"
+        android:id="@+id/swapScreenButton"
         android:enabled="false"
         android:longClickable="false"
         android:layout_gravity="center_vertical"
-        android:layout_below="@+id/stupidbutton"
-        android:layout_alignLeft="@+id/stupidbutton"
-        android:layout_alignStart="@+id/stupidbutton"
-        android:layout_marginTop="44dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/basicText"
-        android:layout_marginTop="70dp"
-        android:visibility="visible"
-        android:text="My app to change colors!"
+        android:text="My color changing app!"
+        android:id="@+id/textView"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="81dp"
+        android:layout_alignRight="@+id/colorChangeButton"
+        android:layout_alignEnd="@+id/colorChangeButton"
+        android:layout_alignLeft="@+id/colorChangeButton"
+        android:layout_alignStart="@+id/colorChangeButton"
+        android:layout_above="@+id/colorChangeButton" />
 
 
 </RelativeLayout>

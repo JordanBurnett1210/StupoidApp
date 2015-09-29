@@ -4,13 +4,32 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.view.View;
+import android.content.Intent;
+import android.widget.TextView;
+import android.widget.RelativeLayout;
+import android.graphics.Color;
 
-public class StupidActivity extends ActionBarActivity {
+
+public class StupidActivity extends ActionBarActivity
+{
+    private Button colorChangeButton;
+    private Button swapScreenButton;
+    private TextView basicText;
+    private RelativeLayout background;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stupid);
+
+        background = (RelativeLayout) findViewById(R.id.backgroundLayout);
+        swapScreenButton = (Button) findViewById(R.id.swapScreenButton);
+
+        setupListeners();
     }
 
     @Override
@@ -45,17 +64,25 @@ public class StupidActivity extends ActionBarActivity {
         redColor = (int) (Math.random() * 256);
         greenColor = (int) (Math.random() * 256);
         blueColor = (int) (Math.random() * 256);
+
+        background.setBackgroundColor(Color.rgb(redColor, greenColor, blueColor));
+
+        redColor = (int) (Math.random() * 256);
+        greenColor = (int) (Math.random() * 256);
+        blueColor = (int) (Math.random() * 256);
+
+        colorChangeButton.setBackgroundColor(Color.rgb(redColor, greenColor, blueColor));
     }
 
     private void changeVisibility()
     {
        if(basicText.getVisibility() == View.VISIBLE)
        {
-           bsicText.setVisibility(View.GONE);
+           basicText.setVisibility(View.GONE);
        }
        else
        {
-           basicText.setVisibili(View.VISIBLE);
+           basicText.setVisibility(View.VISIBLE);
        }
 
         basicText.setVisibility(View.GONE);
@@ -69,8 +96,18 @@ public class StupidActivity extends ActionBarActivity {
             {
                 //This is where the action happens!
                 changeBackgroundColor();
+                changeVisibility();
 
             }
-        }
+        });
+
+        swapScreenButton.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View buttonView)
+            {
+                Intent myIntent = new Intent(buttonView.getContext(), RunningActivity.class);
+                startActivityForResult(myIntent, 0);
+            }
+        });
     }
 }
